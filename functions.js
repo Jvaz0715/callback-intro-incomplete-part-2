@@ -96,7 +96,7 @@ const uniq = function (array) {
 
   //refactor above using each()
 
-  each(array, function(value) {
+  filter(array, function(value) {
     if (!uniqArray.includes(value)) {
       uniqArray.push(value);
     }
