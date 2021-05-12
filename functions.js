@@ -42,11 +42,19 @@ const map = function (collection, iterator) {
 const filter = function (collection, callback) {
   let newNumsArray = [];
 
-  for (let i = 0; i < collection.length; i++) {
-    if(callback(collection[i]) === true) {
-      newNumsArray.push(collection[i]);
+  // for (let i = 0; i < collection.length; i++) {
+  //   if(callback(collection[i]) === true) {
+  //     newNumsArray.push(collection[i]);
+  //   }
+  // }
+
+  // try to refactor above, using each() function that we created
+
+  each(collection, function(value) {
+    if(callback(value)) {
+      newNumsArray.push(value);
     }
-  }
+  })
 
   return newNumsArray;
 };
@@ -57,11 +65,19 @@ const filter = function (collection, callback) {
 const reject = function (collection, callbackTest) {
   let newNumsArray = [];
 
-  for (let i = 0; i < collection.length; i++) {
-    if (callbackTest(collection[i]) === false) {
-      newNumsArray.push(collection[i]);
+  // for (let i = 0; i < collection.length; i++) {
+  //   if (callbackTest(collection[i]) === false) {
+  //     newNumsArray.push(collection[i]);
+  //   }
+  // }
+
+  // refactor above using each()
+
+  each(collection, function(value) {
+    if(callbackTest(value)!= true) {
+      newNumsArray.push(value);
     }
-  }
+  })
 
   return newNumsArray;
 };
