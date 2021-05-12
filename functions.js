@@ -39,11 +39,38 @@ const map = function (collection, iterator) {
   return result;
 };
 
-const filter = function (collection, callback) {};
+const filter = function (collection, callback) {
+  let newNumsArray = [];
+
+  for (let i = 0; i < collection.length; i++) {
+    if(callback(collection[i]) === true) {
+      newNumsArray.push(collection[i]);
+    }
+  }
+
+  return newNumsArray;
+};
+
+
+
 //reject([1, 2, 3, 4, 5, 6], isEven);
-const reject = function (collection, callbackTest) {};
+const reject = function (collection, callbackTest) {
+  let newNumsArray = [];
+
+  for (let i = 0; i < collection.length; i++) {
+    if (callbackTest(collection[i]) === false) {
+      newNumsArray.push(collection[i]);
+    }
+  }
+
+  return newNumsArray;
+};
+
+
 
 const uniq = function (array) {};
+
+
 
 const reduce = function (collection, iterator, accumulator) {};
 
