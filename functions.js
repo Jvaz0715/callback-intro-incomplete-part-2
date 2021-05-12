@@ -87,15 +87,8 @@ const reject = function (collection, callbackTest) {
 const uniq = function (array) {
   //declare new array that will not include repeat numbers
   let uniqArray = [];
-  //loop through the array, only push into uniqArray if uniqArray does NOT already include the integer
-  // for (let i =0; i < array.length; i++) {
-  //   if (!uniqArray.includes(array[i])) {
-  //     uniqArray.push(array[i])
-  //   }
-  // }
-
-  //refactor above using each()
-
+  
+  //refactor above using filter()
   filter(array, function(value) {
     if (!uniqArray.includes(value)) {
       uniqArray.push(value);
@@ -103,24 +96,33 @@ const uniq = function (array) {
   })
 
   return uniqArray;
+
+  //loop through the array, only push into uniqArray if uniqArray does NOT already include the integer
+  // for (let i =0; i < array.length; i++) {
+  //   if (!uniqArray.includes(array[i])) {
+  //     uniqArray.push(array[i])
+  //   }
+  // }
 };
 
 
 // solves 3/4 test but does not account for
 // "should not invoke the iterator on the first element when using it as an accumulator"
 const reduce = function (collection, iterator, accumulator) {
-  let count = 0;
   if (accumulator === undefined) {
-    let count = collection[0];
+    accumulator = collection[0];
+    for (let i = 1; i < collection.length; i++) {
+      accumulator = iterator(accumulator, collection[i]);
+    }
   } else {
-    let count = accumulator;
+    for (let i = 0; i < collection.length; i++) {
+      accumulator = iterator(accumulator, collection[i]);
+    }
   }
-  for (let i = 0; i < collection.length; i++) {
-    count = iterator(count, collection[i]);
-  }
-
-  return count;
+  return accumulator;
 };
+
+
 
 module.exports = {
   filter,
