@@ -88,11 +88,20 @@ const uniq = function (array) {
   //declare new array that will not include repeat numbers
   let uniqArray = [];
   //loop through the array, only push into uniqArray if uniqArray does NOT already include the integer
-  for (let i =0; i < array.length; i++) {
-    if (!uniqArray.includes(array[i])) {
-      uniqArray.push(array[i])
+  // for (let i =0; i < array.length; i++) {
+  //   if (!uniqArray.includes(array[i])) {
+  //     uniqArray.push(array[i])
+  //   }
+  // }
+
+  //refactor above using each()
+
+  each(array, function(value) {
+    if (!uniqArray.includes(value)) {
+      uniqArray.push(value);
     }
-  }
+  })
+
   return uniqArray;
 };
 
