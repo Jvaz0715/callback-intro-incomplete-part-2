@@ -109,16 +109,22 @@ const uniq = function (array) {
 // solves 3/4 test but does not account for
 // "should not invoke the iterator on the first element when using it as an accumulator"
 const reduce = function (collection, iterator, accumulator) {
+  // check to see if accumulator is defined
   if (accumulator === undefined) {
+    // if accumulator is not defined, than use the first element as the accumulator
     accumulator = collection[0];
+    // since the first element is being used as the accumulator, than i starts at index 1 NOT 0
     for (let i = 1; i < collection.length; i++) {
+      // the accumulator will equal the iterator function with the previous loops accumulator and, the current collection[i] as its parameters
       accumulator = iterator(accumulator, collection[i]);
     }
   } else {
+    // if the accumulator IS defined, then proceed with a loop that starts at index 0 of the loop
     for (let i = 0; i < collection.length; i++) {
       accumulator = iterator(accumulator, collection[i]);
     }
   }
+  // the function will return the accumulator
   return accumulator;
 };
 
