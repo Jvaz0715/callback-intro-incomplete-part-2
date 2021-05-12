@@ -120,9 +120,9 @@ const reduce = function (collection, iterator, accumulator) {
     }
   } else {
     // if the accumulator IS defined, then proceed with a loop that starts at index 0 of the loop
-    for (let i = 0; i < collection.length; i++) {
-      accumulator = iterator(accumulator, collection[i]);
-    }
+    each(collection, function(value) {
+      accumulator = iterator(accumulator, value);
+    }) 
   }
   // the function will return the accumulator
   return accumulator;
